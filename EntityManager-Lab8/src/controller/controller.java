@@ -5,6 +5,7 @@
  */
 package controller;
 
+import java.util.List;
 import model.model;
 import model.Address;
 import model.Customer;
@@ -19,7 +20,7 @@ public class controller {
         m = new model();
     }
     
-    public void creatData(Long id, String firstname, String lastname, String email, String street, String city, String country, String zipcode){
+    public void setData(Long id, String firstname, String lastname, String email, String street, String city, String country, String zipcode){
         Customer customer = new Customer(id, firstname, lastname, email);
         Address address = new Address(id, street, city, zipcode, country);
         address.setCustomerFk(customer);
@@ -27,11 +28,11 @@ public class controller {
         m.persist(address, customer);
     }
     
-    public void printAllCustomer(){
-        m.printAll();
+    public List<Customer> getAllCustomer(){
+        return m.findAllCustomer();
     }
     
-    public void printCustomerByCity(String city){
-        m.printByCity(city);
+    public List<Customer> getCustomerByCity(String city){
+        return m.findCustomerByCity(city);
     }
 }
