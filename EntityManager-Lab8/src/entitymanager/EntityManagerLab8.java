@@ -66,22 +66,17 @@ public class EntityManagerLab8 {
     
     public static void printAllCustomer(){
         List<Customer> ctm = c.getAllCustomer();
-        for(int i = 0; i < ctm.size(); i++) {
-           System.out.println("Firstname : "+ctm.get(i).getFirstname());
-           System.out.println("Lastname : "+ctm.get(i).getLastname());
-           System.out.println("Email : "+ctm.get(i).getEmail());
-           System.out.println("Street : "+ctm.get(i).getAddressId().getStreet());
-           System.out.println("City : "+ctm.get(i).getAddressId().getCity());
-           System.out.println("Country : "+ctm.get(i).getAddressId().getCountry());
-           System.out.println("Zip code : "+ctm.get(i).getAddressId().getZipcode());
-           System.out.println("--------------------------------------------------------------");
-       }
+        printTemplate(ctm);
     }
     
     public static void printCustomerByCity(String city){
         List<Customer> ctm = c.getCustomerByCity(city);
         if(ctm.size()==0)
            System.out.println("Can not find "+city);
+        printTemplate(ctm);
+    }
+
+    public static void printTemplate(List<Customer> ctm){
         for(int i = 0; i < ctm.size(); i++) {
            System.out.println("Firstname : "+ctm.get(i).getFirstname());
            System.out.println("Lastname : "+ctm.get(i).getLastname());
@@ -93,5 +88,4 @@ public class EntityManagerLab8 {
            System.out.println("--------------------------------------------------------------");
        }
     }
-
 }
